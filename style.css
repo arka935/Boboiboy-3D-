@@ -2,17 +2,96 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    user-select: none;
 }
 
 body {
-    margin: 0;
-    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #0a0a2a;
+    overflow: hidden;
+    touch-action: manipulation;
+}
+
+.menu-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    z-index: 10;
+}
+
+.menu-container h1 {
+    color: gold;
+    font-size: 2.5rem;
+    text-shadow: 4px 4px 0 #b8860b;
+    margin-bottom: 30px;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.menu-container button {
+    background: #ffaa33;
+    border: none;
+    padding: 12px 40px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    width: 220px;
+    box-shadow: 0 5px 0 #aa6f20;
+}
+
+.menu-container button:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #aa6f20;
+}
+
+.settings-panel {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,0.95);
+    padding: 25px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    color: white;
+    width: 280px;
+    text-align: center;
+    border: 2px solid gold;
+    z-index: 20;
+}
+
+.settings-panel input {
+    width: 100%;
+    margin: 10px 0;
+}
+
+.hidden {
+    display: none;
+}
+
+.game-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     overflow: hidden;
     background: #000;
 }
 
-#canvas {
-    position: fixed;
+#gameCanvas {
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -20,80 +99,108 @@ body {
     display: block;
 }
 
-#ui {
+.game-ui {
     position: fixed;
-    bottom: 10px;
+    bottom: 15px;
     left: 0;
     right: 0;
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    padding: 8px 12px;
-    z-index: 10;
-    background: rgba(0,0,0,0.7);
-    color: white;
+    padding: 10px 15px;
+    pointer-events: none;
+    z-index: 20;
+    flex-wrap: wrap;
     gap: 10px;
+    background: rgba(0,0,0,0.5);
 }
 
 .mode-status {
-    font-size: 14px;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.8);
+    color: gold;
     padding: 6px 12px;
-    border-radius: 20px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    backdrop-filter: blur(4px);
+    pointer-events: none;
     white-space: nowrap;
 }
 
-.button-group {
+.controls {
     display: flex;
-    flex-wrap: wrap;
     gap: 8px;
+    pointer-events: auto;
+    flex-wrap: wrap;
     justify-content: flex-end;
 }
 
-#ui button {
-    pointer-events: auto;
-    padding: 8px 16px;
-    font-size: 14px;
-    font-weight: bold;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    background: #333;
+.controls button {
+    background: #222;
     color: white;
+    border: none;
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    border-radius: 40px;
+    cursor: pointer;
+    box-shadow: 0 3px 0 #666;
+    transition: 0.05s linear;
+    touch-action: manipulation;
     min-width: 70px;
+}
+
+.controls button:active {
+    transform: translateY(2px);
+    box-shadow: none;
 }
 
 #skillBtn {
     background: #8b00ff;
+    box-shadow: 0 3px 0 #4a0080;
 }
 
-#resetBtn {
-    background: #ff4444;
+.skill-indicator {
+    position: fixed;
+    bottom: 80px;
+    right: 15px;
+    background: rgba(0,0,0,0.7);
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    color: cyan;
+    pointer-events: none;
+    font-weight: bold;
+    z-index: 20;
 }
 
-/* Biar di HP kecil tetap keliatan semua */
 @media (max-width: 600px) {
-    #ui {
+    .game-ui {
         flex-direction: column;
         align-items: stretch;
-        bottom: 5px;
+        bottom: 0;
         padding: 8px;
         gap: 8px;
     }
     
     .mode-status {
         text-align: center;
-        font-size: 12px;
+        font-size: 0.8rem;
     }
     
-    .button-group {
+    .controls {
         justify-content: center;
     }
     
-    #ui button {
+    .controls button {
         padding: 8px 12px;
-        font-size: 12px;
+        font-size: 0.75rem;
         min-width: 60px;
     }
-}
+    
+    .skill-indicator {
+        bottom: 70px;
+        right: 10px;
+        font-size: 0.65rem;
+    }
+    }

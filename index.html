@@ -7,12 +7,11 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- MENU UTAMA -->
     <div id="menuScreen" class="menu-container">
         <h1>BOBOIBOY 3D</h1>
-        <button id="btnStart">▶ Memulai Game</button>
-        <button id="btnSettings">⚙ Settingan</button>
-        <button id="btnExit">✖ Keluar</button>
+        <button id="btnStart">Memulai Game</button>
+        <button id="btnSettings">Settingan</button>
+        <button id="btnExit">Keluar</button>
         <div id="settingsPanel" class="settings-panel hidden">
             <h3>Pengaturan Layar</h3>
             <label>Kecerahan: <input type="range" id="brightness" min="0.5" max="1.5" step="0.01" value="1"></label>
@@ -21,23 +20,19 @@
         </div>
     </div>
 
-    <!-- GAME CONTAINER -->
     <div id="gameContainer" class="game-container hidden">
         <canvas id="gameCanvas"></canvas>
         <div class="game-ui">
-            <div class="mode-status">🔮 Mode: <span id="currentMode">BoBoiBoy</span></div>
+            <div class="mode-status">Mode: <span id="currentMode">BoBoiBoy</span></div>
             <div class="controls">
-                <button id="attackBtn">⚔ SERANG</button>
-                <button id="jumpBtn">🦘 LONCAT</button>
-                <button id="skillBtn">✨ SKILL</button>
-                <button id="resetBtn">🔄 RESET</button>
+                <button id="attackBtn">SERANG</button>
+                <button id="jumpBtn">LONCAT</button>
+                <button id="skillBtn">SKILL</button>
+                <button id="resetBtn">RESET</button>
             </div>
             <div class="skill-indicator" id="skillIndicator">Skill: Elemental Punch</div>
         </div>
     </div>
-
-    <!-- Pesan error jika perlu -->
-    <div id="errorMsg" style="display:none; position:fixed; bottom:10px; left:10px; background:red; color:white; padding:10px;"></div>
 
     <script src="script.js"></script>
 </body>
